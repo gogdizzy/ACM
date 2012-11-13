@@ -17,6 +17,8 @@ http://poj.org/problem?id=1000
 gogdizzy@gmail.com
 ozy4dm@poj.org
 
+2012-11-13 23:01  Create by gogdizzy
+
 **/
 
 main(n){gets(&n);printf("%d",n%85-43);}
