@@ -1,9 +1,24 @@
-/**
-*  http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1005
-*  大数加法
-*  思路：用数组模拟高精度整数，遇到异号，实际是做减法，减法需要用绝对值大的减去小的，然后判断符号
-*  代码直接用字符串，并且重复利用了空间。
-*/
+// 
+// http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1005
+//
+
+#ifdef  VER2
+
+#include "BintBase10.h"
+
+int main() {
+	BintBase10< 1112, 1000000000, 9 >  b1, b2;
+	b1.read();
+	b2.read();
+	b1.add( b2 );
+	b1.write(); putchar( '\n' );
+	return 0;
+}
+
+#endif
+
+
+#ifdef  VER1
 
 #include <stdio.h>
 #include <string.h>
@@ -95,5 +110,5 @@ int main() {
 	return 0;
 }
 
-
+#endif
 
