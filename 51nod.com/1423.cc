@@ -22,6 +22,8 @@
 
 #define VER2
 
+#ifdef VER2
+
 #include <stdio.h>
 
 #define INF  0x7FFFFFFF
@@ -57,7 +59,7 @@ int main() {
 #endif
 
 
-#define VER1
+#ifdef VER1
 
 #include <stdio.h>
 #include <stack>
