@@ -1,27 +1,43 @@
-/**
-*  http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1001
-*  Êı×éÖĞºÍµÈÓÚKµÄÊı¶Ô
-*  Ë¼Â·£ºÏÈÅÅĞò£¬È»ºóË«Ö¸ÕëËÑË÷
+/*
+@author gogdizzy
+@date   2015-08-19
+
+@question
+	http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1001
+
+@solution
+	å…ˆæ’åºï¼Œç„¶ååŒæŒ‡é’ˆä»ä¸¤ä¾§å‘ä¸­é—´æ‰«æ
 */
 
-#include <cstdio>
+#include <stdio.h>
 #include <algorithm>
+
 using namespace std;
 
-int  a[50000];
+#define MAXN 50000
+
+int a[MAXN];
 
 int main() {
-  int  K, N, i, j, ans = 0;
-  scanf( "%d%d", &K, &N );
-  for( i = 0; i < N; ++i ) scanf( "%d", &a[i] );
-  sort( a, a + N );
-  for( i = 0, j = N - 1; i < j; ++i ) {
-    while( i < j && a[i] + a[j] > K ) --j;
-    if( i < j && a[i] + a[j] == K ) {
-      printf( "%d %d\n", a[i], a[j] );
-      ans++;
-    }
-  }
-  if( !ans ) puts( "No Solution" );
-  return 0;
+
+	int  K, N, i, j, s, ans = 0;
+
+	scanf( "%d%d", &K, &N );
+	for( i = 0; i < N; ++i ) scanf( "%d", a + i );
+
+	sort( a, a + N );
+
+	for( i = 0, j = N - 1; i < j; ) {
+		s = a[i] + a[j];
+		if( s == K ) {
+			printf( "%d %d\n", a[i], a[j] );
+			++ans; ++i; --j; 
+		}
+		else if( s < K ) ++i;
+		else --j;
+	}
+
+	if( !ans ) puts( "No Solution" );
+
+	return 0;
 }

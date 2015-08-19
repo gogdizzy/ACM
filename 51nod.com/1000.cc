@@ -1,7 +1,9 @@
-//
-//  http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1000
-//  A + B
-//
+/*
+@author gogdizzy
+@date   2015-08-19
+@question
+	http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1000
+*/
 
 #ifdef  VER2
 
