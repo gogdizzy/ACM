@@ -1,19 +1,27 @@
-/**
-*  http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1011
-*  最大公约数GCD
-*  思路：欧几里得辗转相除
+/*
+@author gogdizzy
+@date   2015-08-19
+
+@question
+	http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1011
+
+@solution
+	娆у嚑閲屽緱杈楄浆鐩搁櫎
 */
 
 #include <stdio.h>
 
+template <typename T>
+T gcd( T a, T b ) {
+	return b == 0 ? a : gcd( b, a % b );
+}
+
 int main() {
-  int  a, b, t;
-  scanf( "%d%d", &a, &b );
-  while( b != 0 ) {
-    t = a % b;
-    a = b;
-    b = t;
-  }
-  printf( "%d\n", a );
-  return 0;
+
+	int a, b;
+
+	scanf( "%d%d", &a, &b );
+	printf( "%d\n", gcd( a, b ) );
+
+	return 0;
 }

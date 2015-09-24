@@ -1,27 +1,31 @@
-/**
-*  http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1013
-*  3µÄÃİµÄºÍ Mod 1000000007
-*  Ë¼Â·£ºÏÈÓÃÇóºÍ¹«Ê½
-*        f(n) = 3^0 + ... + 3^n = ( 3^(n+1) - 1 ) / ( 3 - 1 )
-*        ·ÖÄ¸ÊÇ2£¬¿ÉÒÔÖªµÀËü¶Ô1000000007µÄ³Ë·¨ÄæÔªinv2ÊÇ(1000000007 + 1)/2
-*        f(n) == ( 3^(n+1) - 1 ) * inv2 (mod P)
+/*
+@author gogdizzy
+@date   2015-08-19
+
+@question
+	http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1013
+
+@solution
+	æ ¹æ®ç­‰å¹‚æ±‚å’Œå…¬å¼ï¼Œæœ€åç»“æœè¦é™¤ä»¥2ï¼Œä¸ºäº†é¿å…å¤§æ•°è¿ç®—ï¼Œå¯¹è´¨æ•°å–æ¨¡çš„é™¤æ³•
+	ç›¸å½“äºä¹˜ä»¥2å¯¹Pçš„é€†å…ƒ
 */
 
 #include <stdio.h>
-#define  ULL  unsigned long long
-#define  P  1000000007U
-#define  Inv2  ( (P+1)/2 )
+
+#define  ULL   unsigned long long
+#define  P     1000000007U
+#define  Inv2  ( ( P + 1 ) / 2 )
 
 int main() {
-  unsigned int  n;
-  ULL  mod = 1, tmp = 3ULL;
-  scanf( "%u", &n ); ++n;
-  while( n ) {
-    if( n & 1 ) mod = mod * tmp % P;
-    tmp = tmp * tmp % P;
-    n >>= 1;
-  }
-  
-  printf( "%I64u\n", ( mod + P - 1 ) * Inv2 % P );
-  return 0;
+	unsigned int  n;
+	ULL  mod = 1, tmp = 3ULL;
+	scanf( "%u", &n ); ++n;
+	while( n ) {
+		if( n & 1 ) mod = mod * tmp % P;
+		tmp = tmp * tmp % P;
+		n >>= 1;
+	}
+	
+	printf( "%llu\n", ( mod + P - 1 ) * Inv2 % P );
+	return 0;
 }

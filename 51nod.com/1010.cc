@@ -1,14 +1,19 @@
-/**
-*  http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1010
-*  Ö»°üº¬Òò×Ó2 3 5µÄÊı
-*  Ë¼Â·£º¿´Êı¾İ·¶Î§10^18£¬×î¶àÓĞ61¸ö2Òò×Ó£¬ÓĞ39¸ö3Òò×Ó£¬ÓĞ27¸ö5Òò×Ó
-*        ËùÒÔÏÈ½«ËùÓĞµÄ¿ÉÄÜÊı×Ö¶¼Çó³öÀ´£¬ÅÅĞò£¬È»ºó¶ş·Ö²éÕÒ¡£
+/*
+@author gogdizzy
+@date   2015-08-19
+
+@question
+	http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1010
+
+@solution
+	çœ‹æ•°æ®èŒƒå›´10^18ï¼Œæœ€å¤šæœ‰61ä¸ª2å› å­ï¼Œæœ‰39ä¸ª3å› å­ï¼Œæœ‰27ä¸ª5å› å­
+	æ‰€ä»¥å…ˆå°†æ‰€æœ‰çš„å¯èƒ½æ•°å­—éƒ½æ±‚å‡ºæ¥ï¼Œæ’åºï¼Œç„¶åäºŒåˆ†æŸ¥æ‰¾ã€‚
 */
 
-#include <cstdio>
+#include <stdio.h>
 #include <algorithm>
 
-#define ULL  unsigned long long
+#define  ULL  unsigned long long
 #define  MAXN  1500000000000000000ULL
 #define  P2  61
 #define  P3  39
@@ -17,21 +22,21 @@ ULL  tbl[P2*P3*P5+5];
 int  cnt = 0;
 
 int main() {
-  int  t, i, j, k;
-  ULL  x, m1, m2, m3;
-  for( i = 0, m1 = 1; m1 < MAXN && i < P2; ++i, m1 *= 2 ) {
-    for( j = 0, m2 = m1; m2 < MAXN && j < P3; ++j, m2 *= 3 ) {
-      for( k = 0, m3 = m2; m3 < MAXN && k < P5; ++k, m3 *= 5 ) {
-        tbl[cnt++] = m3;
-      }
-    }
-  }
-  std::sort( tbl, tbl + cnt );
+	int  t, i, j, k;
+	ULL  x, m1, m2, m3;
+	for( i = 0, m1 = 1; m1 < MAXN && i < P2; ++i, m1 *= 2 ) {
+		for( j = 0, m2 = m1; m2 < MAXN && j < P3; ++j, m2 *= 3 ) {
+			for( k = 0, m3 = m2; m3 < MAXN && k < P5; ++k, m3 *= 5 ) {
+				tbl[cnt++] = m3;
+			}
+		}
+	}
+	std::sort( tbl, tbl + cnt );
 
-  scanf( "%d", &t );
-  while( t-- ) {
-    scanf( "%I64u", &x );
-    printf( "%I64u\n", *std::lower_bound( tbl + 1, tbl + cnt, x ) );
-  }
-  return 0;
+	scanf( "%d", &t );
+	while( t-- ) {
+		scanf( "%llu", &x );
+		printf( "%llu\n", *std::lower_bound( tbl + 1, tbl + cnt, x ) );
+	}
+	return 0;
 }
