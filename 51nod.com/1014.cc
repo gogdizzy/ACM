@@ -1,22 +1,30 @@
-/**
-*  http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1014
-*  X^2 Mod P
-*  Ë¼Â·£ºÃ¶¾Ù£¬Ã¶¾Ùµ½µÚÒ»¸öÍ£Ö¹
-*        ÉèxÊÇµÚÒ»¸öÂú×ãÌõ¼şµÄÊı£¬yÊÇµÚ¶ş¸ö£¬Ôò ( y^2 - x^2 ) = k * p£¬¼´( y + x ) * ( y - x ) = k * p
-*        ÒòÎªxºÍy²»ÏàµÈ£¬¶¼ÔÚ[0,p]Çø¼ä£¬ËùÒÔy - x < p£¬0 < y + x < 2p£¬ËùÒÔy + x = p
-*        Ò²¾ÍÊÇËµ£¬ÒªÃ´Ã»ÓĞ´ğ°¸£¬ÒªÃ´ÕÒµ½x£¬Ö±½ÓÊä³öxºÍp-x¼´¿É
+/*
+@author gogdizzy
+@date   2015-08-19
+
+@question
+	http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1014
+
+@solution
+	ç›´æ¥å°è¯•æšä¸¾
+	è®¾xæ˜¯ç¬¬ä¸€ä¸ªæ»¡è¶³æ¡ä»¶çš„æ•°ï¼Œyæ˜¯ç¬¬äºŒä¸ªï¼Œåˆ™ ( y^2 - x^2 ) = k * p
+	å³ ( y + x ) * ( y - x ) = k * p
+	å› ä¸ºxå’Œyä¸ç›¸ç­‰ï¼Œéƒ½åœ¨[0,p]åŒºé—´ï¼Œæ‰€ä»¥y - x < pï¼Œ0 < y + x < 2pï¼Œ
+	æ‰€ä»¥y + x = p
+	ä¹Ÿå°±æ˜¯è¯´ï¼Œè¦ä¹ˆæ²¡æœ‰ç­”æ¡ˆï¼Œè¦ä¹ˆæ‰¾åˆ°xï¼Œç›´æ¥è¾“å‡ºxå’Œp-xå³å¯
 */
 
 #include <stdio.h>
 
 int main() {
-  int  a, p, x, z = 1;
+	int  a, p, x, z = 1;
 
-  scanf( "%d%d", &p, &a );
-  for( x = 1; x <= p; ++x )
-    if( (long long)x * (long long)x % p == a ) { z = 0; break; }
+	scanf( "%d%d", &p, &a );
+	for( x = 1; x <= p; ++x )
+		if( (long long)x * x % p == a ) { z = 0; break; }
 
-  if( z ) puts( "No Solution" );
-  else printf( "%d %d\n", x, p - x );
-  return 0;
+	if( z ) puts( "No Solution" );
+	else printf( "%d %d\n", x, p - x );
+
+	return 0;
 }

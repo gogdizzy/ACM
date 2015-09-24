@@ -1,18 +1,23 @@
-/**
-*  http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1018
-*  ÅÅĞò
-*  Ë¼Â·£ºµ÷ÓÃ¿âº¯ÊıÅÅĞò
+/*
+@author gogdizzy
+@date   2015-08-19
+
+@question
+	http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1018
+
+@solution
+	ç›´æ¥è°ƒç”¨åº“å‡½æ•°æ’åº
 */
 
-#include <cstdio>
+#include <stdio.h>
 #include <algorithm>
 
 int  a[50000];
 
 int main() {
-  int  n, i;
-  for( scanf( "%d", &n ), i = 0; i < n; ++i ) scanf( "%d", a + i );
-  std::sort( a, a + n );
-  for( i = 0; i < n; ++i ) printf( "%d\n", a[i] );
-  return 0;
+	int  n, i;
+	for( scanf( "%d", &n ), i = 0; i < n; ++i ) scanf( "%d", a + i );
+	std::sort( a, a + n );
+	for( i = 0; i < n; ++i ) printf( "%d\n", a[i] );
+	return 0;
 }
