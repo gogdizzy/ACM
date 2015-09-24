@@ -1,17 +1,22 @@
-/**
-*  http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1003
-*  ½×³ËºóÃæ0µÄÊıÁ¿
-*  Ë¼Â·£ºÖ»ĞèÒªÌáÈ¡Òò×Ó5³öÏÖµÄ´ÎÊı¾Í¿ÉÒÔ
+/*
+@author gogdizzy
+@date   2015-08-19
+
+@question
+	http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1001
+
+@solution
+	2çš„å› å­ä¸ªæ•°æ¯”5å¤šï¼Œåªéœ€è¦æå–5çš„å› å­ä¸ªæ•°
 */
 
 #include <stdio.h>
 
 int main() {
-  int  n, r = 0;
-  scanf( "%d", &n );
-  while( n ) {
-    r += n /= 5;
-  }
-  printf( "%d\n", r );
-  return 0;
+	int  n, r = 0;
+	scanf( "%d", &n );
+	while( n ) {
+		r += n /= 5;
+	}
+	printf( "%d\n", r );
+	return 0;
 }
