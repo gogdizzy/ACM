@@ -3,7 +3,7 @@
 @date   2015-08-19
 
 @question
-	http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1001
+	http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1003
 
 @solution
 	2的因子个数比5多，只需要提取5的因子个数

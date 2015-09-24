@@ -3,7 +3,7 @@
 @date   2015-08-19
 
 @question
-	http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1001
+	http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1004
 
 @solution
 	只考虑个位数字的乘积就可以，个位数字的末尾是每4次幂循环
