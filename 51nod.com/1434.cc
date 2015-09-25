@@ -52,7 +52,9 @@ int solve( int n ) {
 
 	for( i = 0; p[i] <= n; ++i ) {
 		tmp = p[i];
-		while( tmp * p[i] <= n ) tmp *= p[i];
+		// 为什么不用 tmp * p[i] <= n，因为数据范围导致int越界
+		// 如果用64位整数，就可以把除法转乘法了
+		while( tmp <= n / p[i] ) tmp *= p[i];
 		tmp = ( n / tmp + 1 ) * tmp;
 		if( tmp > ans ) ans = tmp;
 	}
