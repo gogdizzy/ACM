@@ -3,7 +3,7 @@
 @date   2015-08-19
 
 @question
-	http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1001
+	http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1153
 
 @solution
 	维护一个递减单调栈，每个位置附加一个数据，表示到这个位置累加的最长序列长度
