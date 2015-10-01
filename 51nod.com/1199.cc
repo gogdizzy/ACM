@@ -1,21 +1,27 @@
-﻿/**
-*  http://51nod.com/onlineJudge/questionCode.html#!problemId=1199
-*  Money out of Thin Air
-*  参考答案：http://51nod.com/question/index.html#!questionId=631
-*  思路：之前的树可能是不平衡的，对这个树做一个前序遍历，对经过的节点编号
-*        这样每个节点获得了一个新的编号，而且一个节点的所有子树节点编号是连续的
-*        这样就可以将问题转换为线段树来做
-*
-*  教训：构造开始的树的时候，按孩子兄弟构造，然后是遍历兄弟，把新节点加到兄弟末尾
-*        贡献了好多TLE，还以为是线段树的问题，一直改线段树
-*        正确的做法是新的孩子节点作为兄弟链表的头。
-*/
+/*
+@author gogdizzy
+@date   2015-08-19
 
+@question
+	http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1199
+
+@solution
+	参考：http://51nod.com/question/index.html#!questionId=631
+
+	
+	思路：之前的树可能是不平衡的，对这个树做一个前序遍历，对经过的节点编号
+	这样每个节点获得了一个新的编号，而且一个节点的所有子树节点编号是连续的
+	这样就可以将问题转换为线段树来做
+
+	教训：构造开始的树的时候，按孩子兄弟构造，然后是遍历兄弟，把新节点加到兄弟末尾
+	贡献了好多TLE，还以为是线段树的问题，一直改线段树
+	正确的做法是新的孩子节点作为兄弟链表的头。
+*/
 
 #include <stdio.h>
 #include <stdint.h>
 #define  MAXN  50001
-#define  INVALID  MAXN * 4
+#define  INVALID  ( MAXN * 4 )
 struct  node_t {
 	uint16_t  child;
 	uint16_t  sibling;
@@ -170,7 +176,7 @@ int main() {
 	}
 
 	for( i = 0; i < n; ++i ) {
-		printf( "%I64u\n", query_single_segtree( ID( old_range[i].left, old_range[i].left ) ) );
+		printf( "%llu\n", query_single_segtree( ID( old_range[i].left, old_range[i].left ) ) );
 	}
 	return 0;
 }
