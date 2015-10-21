@@ -35,7 +35,7 @@ void init() {
 
 int main() {
 
-	int t, i, a, b;
+	int t, a, b;
 
 	init();
 
