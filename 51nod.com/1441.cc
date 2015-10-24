@@ -38,6 +38,7 @@ int main() {
 	int t, a, b;
 
 	init();
+	printf( "%d\n", sum[MAXN] );
 
 	scanf( "%d", &t );
 	while( t-- ) {
