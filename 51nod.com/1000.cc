@@ -5,6 +5,8 @@
 	http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1000
 */
 
+#define VER2
+
 #ifdef  VER2
 
 #include <iostream>
