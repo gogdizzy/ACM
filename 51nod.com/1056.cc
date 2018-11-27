@@ -9,13 +9,14 @@
 #include <unordered_map>
 
 #define MAXN 50000
+#define MINANS 200
 
 int a[MAXN];
 
 int main() {
 
-    int n, maxa = 1, ans = 2;
-    std::unordered_map< int, int > cnt;
+    int n, maxa = 1, ans = MINANS - 1;
+    std::unordered_map< int, int > cnt( MAXN * 2 );
 
     scanf( "%d", &n );
     for( int i = 0; i < n; ++i ) {
@@ -43,7 +44,7 @@ int main() {
         }
     }
 
-    if( ans >= 200 ) printf( "%d\n", ans );
+    if( ans >= MINANS ) printf( "%d\n", ans );
     else puts( "No Solution" );
 
     return 0;
