@@ -1,1 +1,2 @@
-#include "51nod.com/1000.cc"
+#include "51nod.com/1055.cc"
+
