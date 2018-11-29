@@ -1,20 +1,9 @@
-/**
- * http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1277
- * 字符串中的最大值
- * 思路：KMP 或 后缀自动机
- **/
+//
+// Created by 关鑫 on 2018-11-29.
+//
 
-#define VER2
+#pragma once
 
-#ifdef VER2
-
-#include <stdio.h>
-#include <vector>
-
-
-#define MAXN 100001
-
-char s[MAXN];
 
 class SuffixAutomaton {
 
@@ -103,85 +92,3 @@ private:
     std::vector< State > states_;
     int last_;
 };
-
-int cnt[MAXN<<1];
-int rank[MAXN<<1];
-int right[MAXN<<1];
-
-int main() {
-    SuffixAutomaton sam;
-    long long ans = 0, tmp;
-
-    scanf( "%s", s );
-
-    int len = 0;
-    while( s[len] ) sam.expand( s[len++] - 'a' );
-
-    for( int i = 0; i < sam.size(); ++i ) {
-        ++cnt[sam.get(i).maxlen];
-    }
-
-    for( int i = 1; i <= len; ++i ) {
-        cnt[i] += cnt[i - 1];
-    }
-
-    for( int i = 0; i < sam.size(); ++i ) {
-        rank[--cnt[sam.get(i).maxlen]] = i;
-    }
-
-    for( int i = 0, c = 0; i < len; ++i ) {
-        ++right[c = sam.get(c).trans[s[i]-'a']];
-    }
-
-    for( int i = sam.size() - 1; i >= 0; --i ) {
-        int p = rank[i];
-        right[sam.get(p).slink] += right[p];
-    }
-
-    for( int i = 0, c = 0; i < len; ++i ) {
-        tmp = (long long)right[c = sam.get(c).trans[s[i]-'a']] * (i + 1);
-        if( tmp > ans ) ans = tmp;
-    }
-
-    printf( "%lld\n", ans );
-    return 0;
-}
-
-#endif
-
-#ifdef VER1
-
-#include <stdio.h>
-#include <string.h>
-
-#define MAXN 100002
-
-char s[MAXN];
-int n[MAXN];
-int rep[MAXN];
-
-int main() {
-	scanf( "%s", s + 1 );
-	int len = strlen( s + 1 );
-	long long ans = 0, tmp;
-
-	// s[1..n[i]] is suffix of s[1..i]
-	n[1] = 0;
-	for( int i = 2; i <= len; ++i ) {
-		int j = n[i - 1];
-		while( j && s[j + 1] != s[i] ) j = n[j];
-		if( s[j + 1] == s[i] ) ++j;
-		n[i] = j;
-	}
-
-	for( int i = len; i > 0; --i ) {
-		tmp = (long long)i * ++rep[i];
-		if( tmp > ans ) ans = tmp;
-		rep[n[i]] += rep[i];
-	}
-
-	printf( "%lld\n", ans );
-	return 0;
-}
-
-#endif
