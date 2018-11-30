@@ -1,2 +1,2 @@
-#include "hihocoder.com/1449.cc"
+#include "51nod.com/1196.cc"
 
