@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <algorithm>
 
-#define KILL( x, z ) ( (x) < 0 ? 0 : (x) / z + 1 )
+#define KILL( x, z ) ( (x) < 0 ? 0 : (x) / (z) + 1 )
 
 int h[10];
 int ans = 0x7FFFFFFF;

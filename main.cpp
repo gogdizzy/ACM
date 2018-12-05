@@ -1,2 +1,2 @@
-#include "51nod.com/1489.cc"
+#include "51nod.com/1351.cc"
 

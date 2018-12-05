@@ -39,4 +39,6 @@ int main() {
         while( k-- ) n = tmax[n] - tmin[n];
         printf( "%d\n", n );
     }
+
+    return 0;
 }
