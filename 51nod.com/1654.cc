@@ -1,10 +1,18 @@
-//
-// Created by 关鑫 on 2018-11-29.
-//
+/**
+ * https://www.51nod.com/Challenge/Problem.html#!#problemId=1654
+ * 子串求和
+ * 思路：后缀自动机
+ *      F(S,x)，就是先统计出x的endpos，假设有n个，那么F(S,x) = n*(n+1)/2
+ *      累计每个子串的贡献
+ **/
 
-#pragma once
 
+#include <stdio.h>
 #include <vector>
+
+#define MAXN 100000
+
+char s[MAXN + 1];
 
 class SuffixAutomaton {
 
@@ -94,3 +102,14 @@ private:
     std::vector< State > states_;
     int last_;
 };
+
+int main() {
+    scanf( "%s", s );
+
+    SuffixAutomaton sam;
+    for( int i = 0; s[i]; ++i ) {
+        sam.expand( s[i] - 'a' );
+    }
+
+    return 0;
+}
