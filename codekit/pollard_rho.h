@@ -1,6 +1,7 @@
 //
 // Created by 关鑫 on 2018-12-06.
 // https://en.wikipedia.org/wiki/Pollard%27s_rho_algorithm
+// https://blog.csdn.net/xffyjq/article/details/52693369
 
 #pragma once
 
