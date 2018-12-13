@@ -75,7 +75,7 @@ struct PollardRho {
         do {
             T base = rand() % ( n - 2 ) + 2;
             T c = rand() % ( n - 1 ) + 1;
-            f = find1( n, base, c );
+            f = find2( n, base, c );
         } while( f == n );
         factorize( f );
         factorize( n / f );
@@ -92,6 +92,20 @@ protected:
             x = g( x );
             y = g( g( y ) );
             d = gcd( ( x - y + n ), n );
+        }
+        return d;
+    }
+
+    T find2( const T &n, const T &base, const T &c ) {
+        T x_fixed = base, x = base, d = 1;
+        int size = 2;
+        while( d == 1 ) {
+            for( int count = 1; ( count <= size ) && ( d <= 1 ); ++count ) {
+                x = ( x * x + c ) % n;
+                d = gcd( x - x_fixed + n, n );
+            }
+            size = size * 2;
+            x_fixed = x;
         }
         return d;
     }

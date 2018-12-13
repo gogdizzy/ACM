@@ -2,6 +2,7 @@
  * https://www.51nod.com/Challenge/Problem.html#!#problemId=1171
  * 两个数的平方和
  * 思路：http://www.cppblog.com/wujiawei/archive/2010/08/18/123784.html
+ *      https://blog.csdn.net/new_ke_2014/article/details/22200943
  **/
 
 

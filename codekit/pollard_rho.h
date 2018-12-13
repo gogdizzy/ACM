@@ -7,16 +7,16 @@
 
 template < typename T >
 struct PollardRho {
-    std::vector< T > factor;
+    std::vector <T> factors;
 
-    void factorize( T n ) {
+    void factorsize( T n ) {
         while( !( n & 1 ) ) {
-            factor.push_back( 2 );
+            factors.push_back( 2 );
             n /= 2;
         }
 
-        if( MillerRabin<T>::test( n, 100 ) ) {
-            factor.push_back( n );
+        if( MillerRabin< T >::test( n, 100 ) ) {
+            factors.push_back( n );
             return;
         }
 
@@ -26,21 +26,35 @@ struct PollardRho {
             T c = rand() % ( n - 1 ) + 1;
             f = find1( n, base, c );
         } while( f == n );
-        factorize( f );
-        factorize( n / f );
+        factorsize( f );
+        factorsize( n / f );
     }
 
 
 protected:
-    T find1( const T& n, const T& base, const T& c ) {
+    T find1( const T &n, const T &base, const T &c ) {
         T x = base;
         T y = base;
         T d = 1;
-        auto g = [&]( const T& x ) { return ( x * x + c ) % n; };
+        auto g = [ & ]( const T &x ) { return ( x * x + c ) % n; };
         while( d == 1 ) {
             x = g( x );
             y = g( g( y ) );
             d = gcd( ( x - y + n ), n );
+        }
+        return d;
+    }
+
+    T find2( const T &n, const T &base, const T &c ) {
+        T x_fixed = base, x = base, d = 1;
+        int size = 2;
+        while( d == 1 ) {
+            for( int count = 1; ( count <= size ) && ( d <= 1 ); ++count ) {
+                x = ( x * x + c ) % n;
+                d = gcd( x - x_fixed + n, n );
+            }
+            size = size * 2;
+            x_fixed = x;
         }
         return d;
     }
