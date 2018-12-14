@@ -40,7 +40,7 @@ struct SumOfTwoSquares {
         }
 
         // 各个因子的组合
-        
+
     }
 
 protected:
