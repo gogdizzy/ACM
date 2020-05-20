@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(ACM)
 
 set(CMAKE_CXX_STANDARD 17)
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 
 find_program(CCACHE_FOUND ccache)
 if (CCACHE_FOUND)

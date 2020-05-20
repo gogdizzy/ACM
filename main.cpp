@@ -1,4 +1,4 @@
-#include "51nod.com/2122.cc"
+#include "51nod.com/1906.cc"
 
 // 51nod - 1207
 // 51nod - 1962
