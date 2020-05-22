@@ -19,7 +19,12 @@
 
 template < typename T, bool NOT_USED = std::is_integral< T >::value >
 class MergeFindSet {
+
 public:
+    void Reset() {
+        _father.clear();
+    }
+
     T Find( const T &x ) {
         auto it = _father.find(x);
         if( it == _father.end() || it->second == x ) return x;
@@ -43,6 +48,7 @@ protected:
 
 template < typename IntType >
 class MergeFindSet< IntType, true > {
+
 public:
     // size - 数组总长度
     // zeroPos - 0的位置，可能是负数
@@ -50,7 +56,12 @@ public:
         _size = size;
         _buf1 = new IntType[size];
         _father = _buf1 - zeroPos;
-        for( ssize_t i = 0; i < size; ++i ) {
+        Reset();
+    }
+
+    void Reset() {
+        auto zeroPos = _buf1 - _father;
+        for( ssize_t i = 0; i < _size; ++i ) {
             _buf1[i] = i + zeroPos;
         }
     }
@@ -82,9 +93,16 @@ private:
 
 template < typename T, bool NOT_USED = std::is_integral< T >::value >
 class MergeFindSetWithStat {
+
 public:
 
     MergeFindSetWithStat() : _statOK( false ) {}
+
+    void Reset() {
+        _statOK = false;
+        _father.clear();
+        _count.clear();
+    }
 
     T Find( const T &x ) {
         auto it = _father.find(x);
@@ -141,15 +159,21 @@ public:
         _buf2 = new size_t[size];
         _father = _buf1 - zeroPos;
         _count = _buf2 - zeroPos;
-        for( ssize_t i = 0; i < size; ++i ) {
-            _buf1[i] = i + zeroPos;
-            _buf2[i] = 0;
-        }
+        Reset();
     }
 
     ~MergeFindSetWithStat() {
         if( _buf1 ) delete[] _buf1;
         if( _buf2 ) delete[] _buf2;
+    }
+
+    void Reset() {
+        _statOK = false;
+        auto zeroPos = _buf1 - _father;
+        for( ssize_t i = 0; i < size; ++i ) {
+            _buf1[i] = i + zeroPos;
+            _buf2[i] = 0;
+        }
     }
 
     IntType Find( IntType x ) {
