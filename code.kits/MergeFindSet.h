@@ -70,7 +70,7 @@ public:
         if( xRoot != yRoot ) _father[yRoot] = xRoot;
     }
 
-    bool InSameSet( const T &x, const T &y ) {
+    bool InSameSet( IntType x, IntType y ) {
         return Find( x ) == Find( y );
     }
 
@@ -166,7 +166,7 @@ public:
         }
     }
 
-    bool InSameSet( const T &x, const T &y ) {
+    bool InSameSet( IntType x, IntType y ) {
         return Find( x ) == Find( y );
     }
 
