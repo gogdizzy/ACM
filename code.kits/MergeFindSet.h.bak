@@ -17,7 +17,7 @@
 #include <type_traits>
 #include <unordered_map>
 
-template < typename T, bool NOT_USED = std::is_integral< T >::value, typename HashT = std::hash<T> >
+template < typename T, bool NOT_USED = std::is_integral< T >::value >
 class MergeFindSet {
 
 public:
@@ -42,7 +42,7 @@ public:
     }
 
 protected:
-    std::unordered_map< T, T, HashT > _father;
+    std::unordered_map< T, T > _father;
 };
 
 
@@ -91,7 +91,7 @@ private:
     IntType *_father;
 };
 
-template < typename T, bool NOT_USED = std::is_integral< T >::value, typename HashT = std::hash<T> >
+template < typename T, bool NOT_USED = std::is_integral< T >::value >
 class MergeFindSetWithStat {
 
 public:
@@ -143,8 +143,8 @@ protected:
 
 protected:
     bool  _statOK;
-    std::unordered_map< T, T, HashT > _father;
-    std::unordered_map< T, size_t, HashT > _count;
+    std::unordered_map< T, T > _father;
+    std::unordered_map< T, size_t > _count;
 };
 
 template < typename IntType >
@@ -208,7 +208,7 @@ public:
 protected:
     void Stat() {
         _numOfSet = 0;
-        std::memset( _buf2, 0, sizeof( size_t ) * _size );
+        memset( _buf2, 0, sizeof( size_t ) * _size );
         auto zeroPos = _buf1 - _father;
         for( ssize_t i = 0; i < _size; ++i ) {
             auto root = Find( _buf1[i] );

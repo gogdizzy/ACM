@@ -11,14 +11,15 @@ if (CCACHE_FOUND)
 endif (CCACHE_FOUND)
 
 include_directories(/usr/local/include)
-find_package(Boost)
+include_directories(code.kits)
 
+find_package(Boost)
 if (Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
 
-    message(STATUS "Boost_INCLUDE_DIRS = ${Boost_INCLUDE_DIRS}.")
-    message(STATUS "Boost_LIBRARIES = ${Boost_LIBRARIES}.")
-    message(STATUS "Boost_LIB_VERSION = ${Boost_LIB_VERSION}.")
+    message(STATUS "Boost_INCLUDE_DIRS = ${Boost_INCLUDE_DIRS}")
+    message(STATUS "Boost_LIBRARIES = ${Boost_LIBRARIES}")
+    message(STATUS "Boost_LIB_VERSION = ${Boost_LIB_VERSION}")
 endif ()
 
 add_executable(main main.cpp)

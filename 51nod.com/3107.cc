@@ -2,44 +2,59 @@
 // Created by 关鑫 on 2020/4/28.
 //
 
-#include <stdio.h>
-#include <algorithm>
+#include <cstdio>
+#include <vector>
+#include <set>
 
-#define MAXN 100000
-#define MAXM 100000
+const int N = 100001;
+const int M = 100001;
 
-int a[MAXN];
-int p[MAXN];
+int cost[N];
+struct Merge {int a, b, c;} merge[M];
+std::vector<int> father[N];
+std::vector<int> way[N];
 
-struct X {
-    int a, b, c;
-} x[MAXM];
-
+struct Cmp {
+    bool operator ()(const int x, const int y) const {
+        return cost[x] < cost[y] || (cost[x] == cost[y] && x < y);
+    }
+};
 
 int main() {
-    int n, m;
-    scanf( "%d %d", &n, &m );
-    for( int i = 0; i < n; ++i ) {
-        scanf( "%d", a + i );
-        p[i] = i;
+    int n, m, a, b, c;
+    std::set<int, Cmp> s;
+    scanf("%d%d", &n, &m);
+    for (int i = 1; i <= n; ++i) {
+        scanf("%d", cost + i);
+        s.insert(i);
     }
-    for( int i = 0; i < m; ++i ) {
-        scanf( "%d %d %d", &x[i].a, &x[i].b, &x[i].c );
-        // if( x[i].a < x[i].b ) std::swap( x[i].a, x[i].b );
-    }
-    std::sort( p, p + n, [&]( const int &x, const int &y ) { return a[x] < a[y]; } );
-    std::sort( x, x + m, [&]( const X &x, const X &y ) {
-        return a[x.c] < a[y.c] || (a[x.c] == a[y.c] && a[x.a] < a[y.a]);
-    } );
-
-    int k = 0;
-    for( int i = 0; i < n; ++i ) {
-        while( i >= x[k].a )
+    for (int i = 1; i <= m; ++i) {
+        scanf("%d%d%d", &a, &b, &c);
+        merge[i] = {a, b, c};
+        father[a].push_back(c);
+        father[b].push_back(c);
+        way[c].push_back(i);
     }
 
-    for( int i = 0; i < n; ++i ) {
-        printf( "%d ", a[i] );
+    while (s.size()) {
+        int minV = *s.begin();
+        s.erase(s.begin());
+        bool shrink = false;
+        for (auto i : way[minV]) {
+            auto& m = merge[i];
+            auto co = cost[m.a] + cost[m.b];
+            if (co < cost[minV]) {
+                shrink = true;
+                cost[minV] = co;
+            }
+        }
+        if (shrink) {
+            for (auto i : father[minV]) {
+                s.insert(i);
+            }
+        }
     }
 
+    for (int i = 1; i <= n; ++i) printf("%d ", cost[i]);
     return 0;
 }

@@ -113,22 +113,27 @@ int main() {
     int len = 0;
     while( s[len] ) sam.expand( s[len++] - 'a' );
 
+    // 统计每个长度有多少不同的子串
     for( int i = 0; i < sam.size(); ++i ) {
         ++cnt[sam.get(i).maxlen];
     }
 
+    // maxlen大的cnt也大
     for( int i = 1; i <= len; ++i ) {
         cnt[i] += cnt[i - 1];
     }
 
+    // state按照maxlen长度，从小到大排序，相同长度无所谓
     for( int i = 0; i < sam.size(); ++i ) {
         rank[--cnt[sam.get(i).maxlen]] = i;
     }
 
+    // 标记绿点为1
     for( int i = 0, c = 0; i < len; ++i ) {
         ++right[c = sam.get(c).trans[s[i]-'a']];
     }
 
+    // 倒序，优先碰到较长的
     for( int i = sam.size() - 1; i > 0; --i ) {
         int p = rank[i];
         auto& state = sam.get(p);

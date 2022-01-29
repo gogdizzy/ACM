@@ -35,7 +35,7 @@ struct SumOfTwoSquares {
                 for( int i = 0; i < it->second; ++i ) guassNums.emplace_back( it->first, 0 );
             }
             else {
-                for( int i = 0; i < it->second; ++i ) guassNums.push_back( compute_4k1( it->first ) )
+                for( int i = 0; i < it->second; ++i ) guassNums.push_back( compute_4k1( it->first ) );
             }
         }
 
